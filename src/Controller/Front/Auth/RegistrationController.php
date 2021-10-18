@@ -2,6 +2,7 @@
 
 namespace App\Controller\Front\Auth;
 
+use App\Entity\StaticStorage\UserRolesStorage;
 use App\Entity\User;
 use App\Form\Front\Auth\RegistrationFormType;
 use App\Repository\UserRepository;
@@ -40,7 +41,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $user->setRoles(['ROLE_USER']);
+            $user->setRoles([UserRolesStorage::ROLE_USER]);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
